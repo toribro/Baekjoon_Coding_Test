@@ -1,5 +1,4 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.StreamTokenizer;
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
@@ -9,20 +8,20 @@ public class Main {
 	private static int count=0;
 	
 	public static void main(String[] args)throws IOException {
-		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer input = new StreamTokenizer(System.in);
 		BufferedWriter output =new BufferedWriter(new OutputStreamWriter(System.out));
-		int N =Integer.parseInt(input.readLine());
+		input.nextToken();
+		int N =(int)input.nval;
 	
 		StringBuilder words =new StringBuilder();
 		for(int i=0; i<N; i++) {
-			
-			words.append(isPalindrome(input.readLine())).append(" ");
+			input.nextToken();
+			words.append(isPalindrome(input.sval)).append(" ");
 			words.append(count).append("\n");
 			count=0;
 		}
 	
 		output.write(words.toString());
-		input.close();
 		output.close();
 		
 	}
